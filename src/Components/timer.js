@@ -54,21 +54,35 @@ const Timer = () => {
     }
   };
 
+  const handleResetButtonClick = () => {
+    let time;
+    if (activeButton === 'Work') {
+      time = '25:00';
+    } else if (activeButton === 'Short Break') {
+      time = '05:00';
+    } else if (activeButton === 'Long Break') {
+      time = '10:00';
+    }
+    setTimer(time);
+    setIsRunning(false);
+    setIsPaused(false);
+  };
+
   return (
     <div className="h-screen w-screen flex justify-center items-center">
       <div className="h-3/5 w-3/5 flex flex-col justify-center items-center">
         <div className="flex gap-12 mb-12">
           <button
-            className={`px-6 py-3 text-black rounded-full ${
+            className={`px-6 py-3 text-white rounded-full ${
               activeButton === 'Work' ? 'bg-white text-black' : 'bg-transparent border-white border'
             }`}
             onClick={() => handleButtonClick('Work')}
             style={{ transform: 'scale(1.3)' }}
           >
-            Work
+            Work Time
           </button>
           <button
-            className={`px-6 py-3 text-black rounded-full ${
+            className={`px-6 py-3 text-white rounded-full ${
               activeButton === 'Short Break' ? 'bg-white text-black' : 'bg-transparent border-white border'
             }`}
             onClick={() => handleButtonClick('Short Break')}
@@ -77,7 +91,7 @@ const Timer = () => {
             Short Break
           </button>
           <button
-            className={`px-6 py-3 text-black rounded-full ${
+            className={`px-6 py-3 text-white rounded-full ${
               activeButton === 'Long Break' ? 'bg-white text-black' : 'bg-transparent border-white border'
             }`}
             onClick={() => handleButtonClick('Long Break')}
@@ -90,20 +104,29 @@ const Timer = () => {
           {timer}
         </div>
         <div className="flex gap-12 mt-12">
-          <button
-            className={`px-6 py-3 border border-white bg-white text-black rounded-full transition-colors duration-300 ${
-              isRunning ? 'opacity-50 cursor-not-allowed' : 'hover:text-white hover:border-white hover:bg-transparent'
-            }`}
-            onClick={handleStartButtonClick}
-            style={{ transform: 'scale(1.3)' }}
-          >
-            {isRunning ? (isPaused ? 'Resume' : 'Pause') : 'Start'}
-          </button>
+        <button
+  className={`px-6 py-3 border ${
+    isRunning ? 'text-black bg-white hover:text-white hover:bg-transparent' : 'hover:text-black hover:bg-white'
+  } ${
+    isRunning && isPaused ? 'text-black bg-white' : 'text-black bg-white hover:text-white hover:bg-transparent'
+  } rounded-full transition-colors duration-300 ${
+    isRunning && isPaused ? 'hover:text-white hover:bg-transparent' : 'hover:text-black hover:bg-white'
+  }`}
+  onClick={handleStartButtonClick}
+  style={{ transform: 'scale(1.3)' }}
+>
+  {isRunning ? (isPaused ? 'Resume' : 'Pause') : 'Start'}
+</button>
+
+
+
+
           <UilRedo
             className={`w-12 h-12 text-white cursor-pointer transition-colors duration-300 ${
-              isRunning ? 'opacity-50 cursor-not-allowed' : 'hover:text-white'
+              isRunning ? 'opacity-80 ' : 'hover:text-white'
             }`}
             style={{ transform: 'scale(1.3)' }}
+            onClick={handleResetButtonClick}
           />
         </div>
       </div>
