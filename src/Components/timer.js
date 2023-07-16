@@ -24,7 +24,7 @@ const Timer = () => {
             Work
           </button>
           <button
-            className={`px-6 py-3 text-stone-300 rounded-full ${
+            className={`px-6 py-3 text-white rounded-full ${
               activeButton === 'Short Break' ? 'bg-white text-black ' : 'bg-transparent border-white border'
             }`}
             onClick={() => handleButtonClick('5:00', 'Short Break')}
@@ -33,8 +33,8 @@ const Timer = () => {
             Short Break
           </button>
           <button
-            className={`px-6 py-3 text-stone-300 rounded-full ${
-              activeButton === 'Long Break' ? 'bg-white text-black ' : 'bg-transparent border-white border'
+            className={`px-6 py-3 text-white rounded-full ${
+              activeButton === 'Long Break' ? 'bg-white text-black' : 'bg-transparent border-white border'
             }`}
             onClick={() => handleButtonClick('10:00', 'Long Break')}
             style={{ transform: 'scale(1.3)' }}
