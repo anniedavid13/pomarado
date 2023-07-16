@@ -72,18 +72,18 @@ const Timer = () => {
     <div className="h-screen w-screen flex justify-center items-center">
       <div className="h-3/5 w-3/5 flex flex-col justify-center items-center">
         <div className="flex gap-12 mb-12">
-          <button
-            className={`px-6 py-3 text-white rounded-full ${
-              activeButton === 'Work' ? 'bg-white text-black' : 'bg-transparent border-white border'
+        <button
+            className={`px-6 py-3 rounded-full ${
+              activeButton === 'Work' ? 'bg-white text-black' : 'bg-transparent text-white border-white border'
             }`}
             onClick={() => handleButtonClick('Work')}
             style={{ transform: 'scale(1.3)' }}
           >
-            Work Time
+            Work
           </button>
           <button
-            className={`px-6 py-3 text-white rounded-full ${
-              activeButton === 'Short Break' ? 'bg-white text-black' : 'bg-transparent border-white border'
+            className={`px-6 py-3 rounded-full ${
+              activeButton === 'Short Break' ? 'bg-white text-black' : 'bg-transparent text-white border-white border'
             }`}
             onClick={() => handleButtonClick('Short Break')}
             style={{ transform: 'scale(1.3)' }}
@@ -91,8 +91,8 @@ const Timer = () => {
             Short Break
           </button>
           <button
-            className={`px-6 py-3 text-white rounded-full ${
-              activeButton === 'Long Break' ? 'bg-white text-black' : 'bg-transparent border-white border'
+            className={`px-6 py-3  rounded-full ${
+              activeButton === 'Long Break' ? 'bg-white text-black' : 'bg-transparent text-white border-white border'
             }`}
             onClick={() => handleButtonClick('Long Break')}
             style={{ transform: 'scale(1.3)' }}
@@ -106,11 +106,11 @@ const Timer = () => {
         <div className="flex gap-12 mt-12">
         <button
   className={`px-6 py-3 border ${
-    isRunning ? 'text-black bg-white hover:text-white hover:bg-transparent' : 'hover:text-black hover:bg-white'
+    isRunning ? 'text-black bg-white hover:text-black hover:bg-transparent' : 'hover:text-black hover:bg-white'
   } ${
-    isRunning && isPaused ? 'text-black bg-white' : 'text-black bg-white hover:text-white hover:bg-transparent'
+    isRunning && isPaused ? 'text-black bg-white' : 'text-black bg-white hover:text-black hover:bg-transparent'
   } rounded-full transition-colors duration-300 ${
-    isRunning && isPaused ? 'hover:text-white hover:bg-transparent' : 'hover:text-black hover:bg-white'
+    isRunning && isPaused ? 'hover:text-black hover:bg-transparent' : 'hover:text-black hover:bg-white'
   }`}
   onClick={handleStartButtonClick}
   style={{ transform: 'scale(1.3)' }}
