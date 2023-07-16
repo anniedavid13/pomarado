@@ -11,15 +11,16 @@ const BackgroundChanger = () => {
     <div
       className="h-screen w-full flex flex-col justify-start items-end"
       style={{
-        backgroundImage: `url(${backgroundImage})`,
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${backgroundImage})`,
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
       }}
+      
     >
       <div className="mt-8 mr-8">
         <select
-          className="p-2 bg-white"
+          className="p-2"
           onChange={handleBackgroundChange}
           defaultValue=""
         >
