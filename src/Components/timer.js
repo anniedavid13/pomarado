@@ -5,11 +5,12 @@ const Timer = () => {
   const [timer, setTimer] = useState('25:00');
   const [activeButton, setActiveButton] = useState('Work');
   const [isRunning, setIsRunning] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
     let countdownInterval;
 
-    if (isRunning) {
+    if (isRunning && !isPaused) {
       const totalTime = parseInt(timer.split(':')[0]) * 60 + parseInt(timer.split(':')[1]);
       let remainingTime = totalTime;
 
@@ -27,7 +28,7 @@ const Timer = () => {
     }
 
     return () => clearInterval(countdownInterval);
-  }, [isRunning, timer]);
+  }, [isRunning, isPaused, timer]);
 
   const handleButtonClick = (button) => {
     let time;
@@ -41,10 +42,16 @@ const Timer = () => {
     setTimer(time);
     setActiveButton(button);
     setIsRunning(false);
+    setIsPaused(false);
   };
 
   const handleStartButtonClick = () => {
-    setIsRunning(true);
+    if (!isRunning) {
+      setIsRunning(true);
+      setIsPaused(false);
+    } else {
+      setIsPaused(!isPaused);
+    }
   };
 
   return (
@@ -88,10 +95,9 @@ const Timer = () => {
               isRunning ? 'opacity-50 cursor-not-allowed' : 'hover:text-white hover:border-white hover:bg-transparent'
             }`}
             onClick={handleStartButtonClick}
-            disabled={isRunning}
             style={{ transform: 'scale(1.3)' }}
           >
-            Start
+            {isRunning ? (isPaused ? 'Resume' : 'Pause') : 'Start'}
           </button>
           <UilRedo
             className={`w-12 h-12 text-white cursor-pointer transition-colors duration-300 ${
